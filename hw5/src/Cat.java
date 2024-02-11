@@ -5,6 +5,7 @@ public class Cat extends Animal {
         mSwimLimit = 0.0f;
       }
 
+    @Override
     public void swim(float distance){
         System.out.printf("Cats can't swim, so %s do nothing%n", mName);
     }
