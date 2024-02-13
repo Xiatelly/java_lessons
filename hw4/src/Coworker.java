@@ -1,9 +1,9 @@
 public class Coworker {
-    private String mName;
-    private String mPosition;
-    private String mEmail;
-    private String mPhone;
-    private int mAge;
+    private String name;
+    private String position;
+    private String email;
+    private String phone;
+    private int age;
 
     public Coworker(
             String name,
@@ -11,27 +11,27 @@ public class Coworker {
             String email,
             String phone,
             int age){
-        mName = name;
-        mPosition = position;
-        mEmail = email;
-        mPhone = phone;
-        mAge = age;
+        this.name = name;
+        this.position = position;
+        this.email = email;
+        this.phone = phone;
+        this.age = age;
     }
 
     public void printData(){
         System.out.print("Name: ");
-        System.out.println(mName);
+        System.out.println(name);
 
         System.out.print("Position: ");
-        System.out.println(mPosition);
+        System.out.println(position);
 
         System.out.print("E-mail: ");
-        System.out.println(mEmail);
+        System.out.println(email);
 
         System.out.print("Phone: ");
-        System.out.println(mPhone);
+        System.out.println(phone);
 
         System.out.print("Age: ");
-        System.out.println(mAge);
+        System.out.println(age);
     }
 }
