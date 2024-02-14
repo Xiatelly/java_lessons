@@ -1,9 +1,9 @@
-public class Animal {
+public abstract class Animal {
     private static int sAnimalsCounter = 0;
 
-    protected String Name;
-    protected float RunLimit = 0.0f;
-    protected float SwimLimimt = 0.0f;
+    protected String name;
+    protected float runLimit = 0.0f;
+    protected float swimLimimt = 0.0f;
 
     public static void printAnimalsCount(){
         System.out.print("Animals count: ");
@@ -11,35 +11,35 @@ public class Animal {
     }
 
     protected Animal(String name){
-        Name = name;
+        this.name = name;
         sAnimalsCounter++;
     }
 
     public void run(float distance){
-        if (distance <= RunLimit){
-            System.out.printf("%s ran %.1f meters%n", Name, distance);
+        if (distance <= runLimit){
+            System.out.printf("%s ran %.1f meters%n", name, distance);
         }
         else {
             System.out.printf(
                     "%s couldn't ran %.1f meters (ran: %.1f meters, left: %.1f meters)%n",
-                    Name,
+                    name,
                     distance,
-                    RunLimit,
-                    distance - RunLimit);
+                    runLimit,
+                    distance - runLimit);
         }
     }
 
     public void swim(float distance){
-        if (distance <= SwimLimimt){
-            System.out.printf("%s swam %.1f meters%n", Name, distance);
+        if (distance <= swimLimimt){
+            System.out.printf("%s swam %.1f meters%n", name, distance);
         }
         else {
             System.out.printf(
                     "%s couldn't swam %.1f meters (swam: %.1f meters, left: %.1f meters)%n",
-                    Name,
+                    name,
                     distance,
-                    SwimLimimt,
-                    distance - SwimLimimt);
+                    swimLimimt,
+                    distance - swimLimimt);
         }
     }
 }

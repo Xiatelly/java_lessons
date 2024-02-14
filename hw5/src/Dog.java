@@ -1,7 +1,7 @@
 public class Dog extends Animal {
     public Dog(String name){
         super(name);
-        RunLimit = 500.0f;
-        SwimLimimt = 10.0f;
+        runLimit = 500.0f;
+        swimLimimt = 10.0f;
     }
 }
