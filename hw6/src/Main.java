@@ -1,14 +1,16 @@
 import figures.*;
-import java.util.ArrayList;
+import members.*;
 
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
         Main main =  new Main();
-        System.out.println("### Task 0 ###");
-        main.testFigures();
 
+        main.testFigures();
+        main.testMembers();
     }
+
     private void testFigures(){
         Circle circle0 = new Circle(2.0f);        ;
         System.out.println(circle0.square());
@@ -24,6 +26,35 @@ public class Main {
 
         float squareSum = FigureMath.CalculateSquareSum(figures);
         System.out.println(squareSum);
+        System.out.println();
+    }
 
+    private void testMembers(){
+        ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
+        obstacles.add(new Wall(2.0f));
+        obstacles.add(new Wall(1.50f));
+        obstacles.add(new RunningTrack(75.0f));
+        obstacles.add(new RunningTrack(100.0f));
+
+        ArrayList<Member> members = new ArrayList<Member>();
+        members.add(new Human("Hero", 2.50f, 150.0f));
+        members.add(new Cat("Cat", 1.0f, 125.0f));
+        members.add(new Robot("T1000", 300.0f, 300.0f));
+
+        for (Member member : members) {
+            boolean overcameAllObstacles = true;
+
+            for (Obstacle obstacle : obstacles) {
+                boolean overcomeResult = member.overcome(obstacle);
+                System.out.println();
+                if (!overcomeResult) {
+                    overcameAllObstacles = false;
+                    break;
+                }
+            }
+
+            if (overcameAllObstacles)
+                System.out.printf("%s overcame all obstacles!!!%n%n", member.getName());
+        }
     }
 }
