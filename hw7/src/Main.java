@@ -1,4 +1,5 @@
 import array_utils.ListUtils;
+import array_utils.StringOccuranceData;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -6,14 +7,7 @@ import java.util.LinkedList;
 public class Main {
     public static void main(String[] args) {
         Main main = new Main();
-        System.out.println("## Task1 ###");
-        main.test1();
-        System.out.println("## Task2 ###");
-        main.test2();
-        System.out.println("## Task3 ###");
-        main.test3();
-    }
-    private void test1(){
+
         ArrayList<String> names = new ArrayList<>();
         names.add("Ann");
         names.add("Michelle");
@@ -33,6 +27,26 @@ public class Main {
         names.add("Alex");
         names.add("Sofie");
         names.add("Michelle");
+
+        System.out.println("## Task1 ###");
+        main.test1(names);
+
+        System.out.println("## Task2 ###");
+        main.test2();
+
+        System.out.println("## Task3 ###");
+        main.test3();
+
+        System.out.println("## Task4 ###");
+        main.test4(names);
+
+        System.out.println("## Task5 ###");
+
+        main.test5(names);
+
+    }
+
+    private void test1(ArrayList<String> names){
         int a = ListUtils.countOccurance(names, "Sofie");
         System.out.println(a);
         System.out.println();
@@ -59,6 +73,15 @@ public class Main {
         ArrayList<Integer> uniqueList = ListUtils.findUnique(newList);
         System.out.println(uniqueList);
         System.out.println();
+    }
+    private void test4(ArrayList<String> names){
+        ListUtils.calcOccurance(names);
+    }
+    private void test5(ArrayList<String> names){
+        ArrayList<StringOccuranceData> result = ListUtils.findOccurace(names);
+        for (StringOccuranceData data : result){
+            System.out.printf("name: %s, occurance: %d%n",data.name, data.occurance);
+        }
     }
 }
 

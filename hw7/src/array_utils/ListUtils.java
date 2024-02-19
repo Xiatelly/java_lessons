@@ -30,4 +30,50 @@ public abstract class ListUtils {
         }
         return newList;
     }
+
+    public static void calcOccurance(ArrayList<String> strings){
+        ArrayList<String> stringList = new ArrayList<String>();
+        ArrayList<Integer> counterList = new ArrayList<Integer>();
+        for (String string : strings){
+            int i = stringList.indexOf(string);
+            if (i >= 0) {
+                Integer counter = counterList.get(i);
+                counter++;
+                counterList.set(i, counter);
+            }
+            else {
+                stringList.add(string);
+                counterList.add(1);
+            }
+        }
+
+        for (int i = 0; i< stringList.size(); i++){
+            System.out.printf(
+                    "%s: %d %n",
+                    stringList.get(i),
+                    counterList.get(i));
+        }
+    }
+
+    private static int findOccuranceIndex(ArrayList<StringOccuranceData> list, String string){
+        for (int i = 0; i < list.size(); i++){
+            if (list.get(i).name.equals(string))
+                return i;
+        }
+        return -1;
+    }
+
+    public static ArrayList<StringOccuranceData> findOccurace(ArrayList<String> strings){
+        ArrayList<StringOccuranceData> result = new ArrayList<StringOccuranceData>();
+        for (String string : strings){
+            int i = findOccuranceIndex(result, string);
+            if (i >= 0){
+                result.get(i).occurance++;
+            }
+            else{
+                result.add(new StringOccuranceData(string, 1));
+            }
+        }
+        return result;
+    }
 }
