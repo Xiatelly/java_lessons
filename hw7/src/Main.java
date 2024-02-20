@@ -1,14 +1,18 @@
 import array_utils.ListUtils;
 import array_utils.StringOccuranceData;
+import phone_book.Notation;
+import phone_book.PhoneBook;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.SortedMap;
 
 public class Main {
     public static void main(String[] args) {
         Main main = new Main();
 
-        ArrayList<String> names = new ArrayList<>();
+        List<String> names = new ArrayList<>();
         names.add("Ann");
         names.add("Michelle");
         names.add("Bob");
@@ -28,25 +32,29 @@ public class Main {
         names.add("Sofie");
         names.add("Michelle");
 
-        System.out.println("## Task1 ###");
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.add("Dima", "334455");
+        phoneBook.add("Misha", "112233");
+        phoneBook.add("Katia", "123456");
+        phoneBook.add("Slava", "456765");
+        phoneBook.add("Dima", "554433");
+        phoneBook.add("Dima", "557733");
+        phoneBook.add("Dima", "558833");
+
         main.test1(names);
 
-        System.out.println("## Task2 ###");
         main.test2();
 
-        System.out.println("## Task3 ###");
         main.test3();
 
-        System.out.println("## Task4 ###");
         main.test4(names);
 
-        System.out.println("## Task5 ###");
+        main.testPhoneBook(phoneBook);
 
-        main.test5(names);
-
+        main.testPhoneBook2(phoneBook);
     }
 
-    private void test1(ArrayList<String> names){
+    private void test1(List<String> names){
         int a = ListUtils.countOccurance(names, "Sofie");
         System.out.println(a);
         System.out.println();
@@ -59,7 +67,7 @@ public class Main {
     }
 
     private void test3(){
-        ArrayList<Integer> newList = new ArrayList<Integer>();
+        List<Integer> newList = new ArrayList<Integer>();
         newList.add(1);
         newList.add(1);
         newList.add(2);
@@ -70,17 +78,34 @@ public class Main {
         newList.add(6);
         newList.add(7);
         newList.add(8);
-        ArrayList<Integer> uniqueList = ListUtils.findUnique(newList);
+        List<Integer> uniqueList = ListUtils.findUnique(newList);
         System.out.println(uniqueList);
         System.out.println();
     }
-    private void test4(ArrayList<String> names){
+
+    private void test4(List<String> names){
         ListUtils.calcOccurance(names);
     }
-    private void test5(ArrayList<String> names){
-        ArrayList<StringOccuranceData> result = ListUtils.findOccurace(names);
+
+    private void test5(List<String> names){
+        List<StringOccuranceData> result = ListUtils.findOccurace(names);
         for (StringOccuranceData data : result){
             System.out.printf("name: %s, occurance: %d%n",data.name, data.occurance);
+        }
+        System.out.println();
+    }
+
+    private void testPhoneBook(PhoneBook phoneBooks){
+        Notation result = phoneBooks.find("Misha");
+        if (result != null)
+            System.out.printf("name: %s, phone number: %s%n", result.name, result.phoneNumber);
+        System.out.println();
+    }
+
+    private void testPhoneBook2(PhoneBook phoneBooks){
+        List<Notation> result = phoneBooks.findAll("Dima");
+        for (Notation notation : result){
+            System.out.printf("name: %s, phone number: %s%n", notation.name, notation.phoneNumber);
         }
     }
 }

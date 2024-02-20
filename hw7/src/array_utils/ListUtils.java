@@ -6,7 +6,7 @@ import java.util.List;
 
 public abstract class ListUtils {
 
-    public static int countOccurance(ArrayList<String> strings, String text){
+    public static int countOccurance(List<String> strings, String text){
         int counter = 0;
         for (String string : strings)
             if (string.equals(text))
@@ -22,8 +22,8 @@ public abstract class ListUtils {
         return intList;
     }
 
-    public static ArrayList<Integer> findUnique(ArrayList<Integer> list){
-        ArrayList<Integer> newList = new ArrayList<Integer>();
+    public static List<Integer> findUnique(List<Integer> list){
+        List<Integer> newList = new ArrayList<Integer>();
         for (Integer integer : list){
             if (!newList.contains(integer))
                 newList.add(integer);
@@ -31,9 +31,9 @@ public abstract class ListUtils {
         return newList;
     }
 
-    public static void calcOccurance(ArrayList<String> strings){
-        ArrayList<String> stringList = new ArrayList<String>();
-        ArrayList<Integer> counterList = new ArrayList<Integer>();
+    public static void calcOccurance(List<String> strings){
+        List<String> stringList = new ArrayList<String>();
+        List<Integer> counterList = new ArrayList<Integer>();
         for (String string : strings){
             int i = stringList.indexOf(string);
             if (i >= 0) {
@@ -55,7 +55,7 @@ public abstract class ListUtils {
         }
     }
 
-    private static int findOccuranceIndex(ArrayList<StringOccuranceData> list, String string){
+    private static int findOccuranceIndex(List<StringOccuranceData> list, String string){
         for (int i = 0; i < list.size(); i++){
             if (list.get(i).name.equals(string))
                 return i;
@@ -63,16 +63,14 @@ public abstract class ListUtils {
         return -1;
     }
 
-    public static ArrayList<StringOccuranceData> findOccurace(ArrayList<String> strings){
-        ArrayList<StringOccuranceData> result = new ArrayList<StringOccuranceData>();
+    public static List<StringOccuranceData> findOccurace(List<String> strings){
+        List<StringOccuranceData> result = new ArrayList<StringOccuranceData>();
         for (String string : strings){
             int i = findOccuranceIndex(result, string);
-            if (i >= 0){
+            if (i >= 0)
                 result.get(i).occurance++;
-            }
-            else{
+            else
                 result.add(new StringOccuranceData(string, 1));
-            }
         }
         return result;
     }
