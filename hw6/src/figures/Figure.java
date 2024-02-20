@@ -1,5 +1,5 @@
 package figures;
 
-public interface IFigure {
+public interface Figure {
     float square();
 }

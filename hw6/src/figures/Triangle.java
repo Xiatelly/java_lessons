@@ -1,6 +1,6 @@
 package figures;
 
-public class Triangle implements IFigure {
+public class Triangle implements Figure {
     private float sideA= 0.0f;
     private float sideB = 0.0f;
     private float sideC = 0.0f;
