@@ -4,9 +4,6 @@ public class Main {
     public static void main(String[] args) {
         Main main = new Main();
         main.testFileNavigator();
-
-
-
     }
     private void printArray(List<FileData> data){
         for(FileData fileData : data)
@@ -37,7 +34,12 @@ public class Main {
 
         System.out.println();
 
-        navigator.remove("/files1");
+        final List<FileData> sorterResult =  navigator.sortBySize();
+        printArray(sorterResult);
+
+        System.out.println();
+
+        navigator.remove("/files2");
         navigator.getData().forEach(
             (path, record) -> {
                printArray(record);

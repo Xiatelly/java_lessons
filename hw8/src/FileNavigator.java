@@ -43,6 +43,21 @@ public class FileNavigator {
         data.remove(pathR);
     }
 
+    public List<FileData> sortBySize(){
+        List<FileData> result = new ArrayList<>();
+
+        data.forEach(
+                (path, record) -> {
+                    for(FileData fileData : record)
+                        result.add(fileData);
+                }
+        );
+        result.sort((a, b) -> {
+            return Integer.compare(a.getSize(), b.getSize());
+        });
+        return result;
+    }
+
     public final HashMap<String, List<FileData>> getData() {
         return data;
     }
