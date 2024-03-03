@@ -49,7 +49,6 @@ public class Main {
 
         if (!findResult.isEmpty())
             findResult.get(0).setPath("/invald_path");
-
         navigator.validatePath();
     }
 }
