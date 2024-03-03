@@ -44,5 +44,10 @@ public class Main {
             (path, record) -> {
                printArray(record);
         });
+
+        System.out.println();
+
+        findResult.get(0).setPath("/invald_path");
+        navigator.validatePath();
     }
 }

@@ -58,6 +58,23 @@ public class FileNavigator {
         return result;
     }
 
+    public void validatePath(){
+        final boolean[] haveError = {false};
+        data.forEach(
+            (path, record) -> {
+                for(FileData fileData : record)
+                   if (!path.equals(fileData.getPath())) {
+                       System.out.printf(
+                               "Path not valid. Key Path: %s, File path: %s, File name: %s%n",
+                               path, fileData.getPath(), fileData.getName());
+                       haveError[0] = true;
+                   }
+            }
+        );
+        if (!haveError[0])
+            System.out.println("All paths are valid");
+    }
+
     public final HashMap<String, List<FileData>> getData() {
         return data;
     }
