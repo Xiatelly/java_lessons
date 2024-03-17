@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class FileNavigator {
 
@@ -11,15 +9,13 @@ public class FileNavigator {
     }
 
     public void add(FileData file){
-        List<FileData> record = data.get(file.getPath());
-        if (record == null){
-            List<FileData> newRecord = new ArrayList<>();
-            newRecord.add(file);
-            data.put(file.getPath(), newRecord);
-        }
-        else{
-            record.add(file);
-        }
+        data.compute(
+                file.getPath(),
+                (k, oldRecord) -> {
+                    List<FileData> record = (oldRecord != null) ? oldRecord : new ArrayList<>();
+                    record.add(file);
+                    return record;
+                });
     }
 
     public final List<FileData> find(String pathK){
@@ -75,7 +71,7 @@ public class FileNavigator {
             System.out.println("All paths are valid");
     }
 
-    public final HashMap<String, List<FileData>> getData() {
-        return data;
+    public Map<String, List<FileData>> getData() {
+        return Collections.unmodifiableMap(data);
     }
 }
