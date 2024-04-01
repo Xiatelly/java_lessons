@@ -67,7 +67,10 @@ public class Main {
     private void printBooks(List<Product> products, final int priceOver){
         products.stream()
                 .filter(product -> {
-                    return product.getType().equals("Book") && product.getPrice() >= priceOver;
+                    return product.getType().equals("Book");
+                })
+                .filter(product -> {
+                    return product.getPrice() >= priceOver;
                 })
                 .forEach(product -> System.out.printf(
                         "Type: %s, price: %d%n",
@@ -78,8 +81,9 @@ public class Main {
     private void printBooksDiscounted(List<Product> products, final float discount){
         products.stream()
                 .filter(product -> {
-                    return product.getType().equals("Book") && product.getDiscount();
+                    return product.getType().equals("Book");
                 })
+                .filter(Product::getDiscount)
                 .forEach(product -> System.out.printf("Type: %s, price with discount: %.1f%n",
                         product.getType(),
                         product.getPrice() * (1.0f - discount / 100.0f)));
@@ -111,11 +115,15 @@ public class Main {
     private void printCurrentYearBooks(List<Product> products, String type, int year, int priseLess) {
         int result = products.stream()
                 .filter(product -> {
-                    return product.getType().equals(type) &&
-                            product.getDate().getYear() == year &&
-                            product.getPrice() <= priseLess;
+                    return product.getType().equals(type);
                 })
-                .mapToInt(value -> value.getPrice())
+                .filter(product -> {
+                    return product.getDate().getYear() == year;
+                })
+                .filter(product -> {
+                    return product.getPrice() <= priseLess;
+                })
+                .mapToInt(Product::getPrice)
                 .sum();
         System.out.printf(
                 "Type: %s, Price less than: %d, Year: %d, total price: %d%n",
