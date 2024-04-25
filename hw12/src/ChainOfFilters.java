@@ -12,7 +12,7 @@ public class ChainOfFilters {
         for (Filter f : this.filters){
            FilterResult result = f.doFilter(request);
            if (!result.result){
-               System.out.printf("400 Bad Request: %s", result.log);
+               System.out.printf("400 Bad Request: %s%n", result.log);
                return false;
            }
         }
