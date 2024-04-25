@@ -1,10 +1,9 @@
 import com.sun.xml.internal.fastinfoset.util.StringArray;
 
 public class ArrayValueCalculator {
+    public static final String SIZE_EXCEPTION_TEXT = "Size of Array should be 4x4";
 
     public int doCalc(String[][] stringArray) throws ArraySizeException, ArrayDataException {
-        final String SIZE_EXCEPTION_TEXT = "Size of Array should be 4x4";
-
         if (stringArray.length != 4)
             throw new ArraySizeException(SIZE_EXCEPTION_TEXT);
 
