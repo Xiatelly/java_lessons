@@ -46,7 +46,7 @@ public class Main {
             System.out.print("Input your word: ");
             userWord = scanner.nextLine();
 
-            for (int i = 0; i < word.length() && i < userWord.length(); i++){
+            for (int i = 0; i < Math.min(word.length(), userWord.length()); i++){
                 if (word.charAt(i) == userWord.charAt(i)){
                     workInProgress[i] = userWord.charAt(i);
                 }
