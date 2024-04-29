@@ -1,0 +1,4 @@
+FILE: log.txt
+LEVEL: INFO
+MAX-SIZE: 1024
+FORMAT: [ %TIME% ][ %LEVEL% ] Message: %MESSAGE%

@@ -1,4 +1,4 @@
-
+import config.FileLoggerSettings;
 
 public class Main {
     public static void main(String[] args) {
@@ -7,7 +7,9 @@ public class Main {
     }
 
     private void testLogger(){
-        FileLoggerConfiguration logConfig = new FileLoggerConfiguration();
+        FileLoggerConfigurationLoader logConfigLoader = new FileLoggerConfigurationLoader();
+
+        FileLoggerConfiguration logConfig = logConfigLoader.load(FileLoggerSettings.DEFAULT_CONFIG_PATH);
         logConfig.setLoggingLevel(LoggingLevel.DEBUG);
         FileLogger fileLogger = new FileLogger(logConfig);
         fileLogger.debug("a=42");
