@@ -1,6 +1,4 @@
 import config.FileLoggerSettings;
-
-import javax.sound.midi.Soundbank;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,20 +42,22 @@ public class FileLoggerConfigurationLoader {
         String key = line.substring(0, colonIndex).trim();
         String value = line.substring(colonIndex + 1).trim();
 
-        if (key.equals(FileLoggerSettings.CONFIG_LOG_PATH_KEY)){
-            config.setLogPath(value);
-        }
-        else if (key.equals(FileLoggerSettings.CONFIG_LOG_LEVEL_KEY)) {
-            config.setLoggingLevel(LoggingLevel.valueOf(value));
-        }
-        else if (key.equals(FileLoggerSettings.CONFIG_LOG_FILE_MAX_SIZE_KEY)) {
-            config.setMaxSizeBytes(Long.parseLong(value));
-        }
-        else if (key.equals(FileLoggerSettings.CONFIG_LOG_FILE_FORMAT_KEY)) {
-            config.setFormat(value);
-        }
-        else {
-            System.err.printf("Invalid config line: %s%n", line);
+        switch (key) {
+            case FileLoggerSettings.CONFIG_LOG_PATH_KEY:
+                config.setLogPath(value);
+                break;
+            case FileLoggerSettings.CONFIG_LOG_LEVEL_KEY:
+                config.setLoggingLevel(LoggingLevel.valueOf(value));
+                break;
+            case FileLoggerSettings.CONFIG_LOG_FILE_MAX_SIZE_KEY:
+                config.setMaxSizeBytes(Long.parseLong(value));
+                break;
+            case FileLoggerSettings.CONFIG_LOG_FILE_FORMAT_KEY:
+                config.setFormat(value);
+                break;
+            default:
+                System.err.printf("Invalid config line: %s%n", line);
+                break;
         }
     }
 }

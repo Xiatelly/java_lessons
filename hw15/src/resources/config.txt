@@ -1,4 +1,4 @@
-FILE: log.txt
-LEVEL: INFO
+FILE: logs/log.txt
+LEVEL: DEBUG
 MAX-SIZE: 1024
 FORMAT: [ %TIME% ][ %LEVEL% ] Message: %MESSAGE%

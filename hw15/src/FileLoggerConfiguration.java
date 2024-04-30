@@ -1,50 +1,20 @@
-public class FileLoggerConfiguration {
+public class FileLoggerConfiguration extends LoggerConfiguration {
     private String logPath;
-    private LoggingLevel loggingLevel = LoggingLevel.DEBUG;
     private long maxSizeBytes = 1048576;
-    private  String format = "[%TIME%][%LEVEL%] Message: %MESSAGE%";
-
-
-    public boolean isLoggingLevelAvailable(LoggingLevel level){
-        if (this.loggingLevel == level)
-            return true;
-
-        switch (this.loggingLevel){
-            case DEBUG:
-                return level == LoggingLevel.INFO;
-        }
-        return false;
-    }
 
     public void setLogPath(String logPath) {
         this.logPath = logPath;
-    }
-
-    public void setLoggingLevel(LoggingLevel loggingLevel) {
-        this.loggingLevel = loggingLevel;
     }
 
     public void setMaxSizeBytes(long maxSizeBytes) {
         this.maxSizeBytes = maxSizeBytes;
     }
 
-    public void setFormat(String format) {
-        this.format = format;
-    }
-
     public String getLogPath() {
         return logPath;
     }
 
-    public LoggingLevel getLoggingLevel() {
-        return loggingLevel;
-    }
-
     public long getMaxSizeBytes() {
         return maxSizeBytes;
-    }
-
-    public String getFormat() {
-        return format;
     }
 }
