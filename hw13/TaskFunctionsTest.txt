@@ -1,0 +1,4 @@
+Test summary for (TaskFunctionsTest) for 28ms :
+Tests run: 6
+Failures: 0
+Ignored: 0
