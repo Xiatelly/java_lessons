@@ -6,16 +6,14 @@ public class JsonFilter implements Filter{
         FilterResult result = new FilterResult();
         try {
             JSONObject jo = new JSONObject(request.getPayload());
-            result.result = (jo!=null);
+            result.result = true;
         }
         catch (Exception e){
             result.result = false;
-        }
-
-        if (!result.result) {
             result.log = String.format(
-                    "Request payload is not JSON: %s",
-                    request.getPayload());
+                    "Request payload is not JSON: %s (Error: %s)",
+                    request.getPayload(),
+                    e.getMessage());
         }
         return result;
     }
