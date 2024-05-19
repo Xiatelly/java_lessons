@@ -1,0 +1,4 @@
+Test summary for (SimpleMathLibraryTest) for 0ms :
+Tests run: 4
+Failures: 0
+Ignored: 0
