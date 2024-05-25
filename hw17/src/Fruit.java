@@ -1,6 +1,3 @@
-public abstract class Fruit {
-    public abstract float getWeight();
-
-
-
+public interface Fruit {
+    float getWeight();
 }

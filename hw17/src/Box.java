@@ -38,7 +38,7 @@ public class Box {
     }
 
     public void merge(Box other){
-        if (!fruits.isEmpty() && other.getFruitClass() != getFruitClass())
+        if (!fruits.isEmpty() && !other.fruits.isEmpty() && other.getFruitClass() != getFruitClass())
             throw new IllegalArgumentException(String.format(
                     "Argument other Box fruits have class: %s, but current Box fruits have class: %s",
                     other.getFruitClass().getName(),
