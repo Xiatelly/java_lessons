@@ -18,6 +18,9 @@ public class SimpleTree<T> {
     }
 
     public SimpleTree<T> addChild(SimpleTree<T> child){
+        if (value == null){
+            throw new IllegalArgumentException("Argument is null");
+        }
         children.add(child);
         return child;
     }
