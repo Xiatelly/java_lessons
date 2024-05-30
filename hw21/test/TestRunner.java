@@ -2,6 +2,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class TestRunner {
@@ -32,11 +33,9 @@ public class TestRunner {
         if (beforeSuiteMethod != null)
             beforeSuiteMethod.invoke(test);
 
-        testMethods.sort((Method a, Method b) -> {
-            int aPriority = a.getDeclaredAnnotation(Test.class).priority();
-            int bPriority = b.getDeclaredAnnotation(Test.class).priority();
-            return Integer.compare(bPriority, aPriority);
-        });
+        Comparator<Method> comparator = (Comparator.comparingInt(
+                method -> method.getDeclaredAnnotation(Test.class).priority()));
+        testMethods.sort(comparator.reversed());
 
         for (Method method : testMethods)
             method.invoke(test);
