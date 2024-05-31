@@ -1,38 +1,33 @@
 package edu.logger;
 
+import edu.logger.config.FileLoggerSettings;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
+public class AppTest
     extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+    public void testFileLogger(){
+    FileLoggerConfigurationLoader logConfigLoader = new FileLoggerConfigurationLoader();
+
+    FileLoggerConfiguration logConfig = logConfigLoader.load(FileLoggerSettings.DEFAULT_CONFIG_PATH);
+    testLogger(new FileLogger(logConfig));
+}
+
+    public void testStdoutLogger(){
+        StdoutLoggerConfiguration logConfig = new StdoutLoggerConfiguration();
+        testLogger(new StdoutLogger(logConfig));
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+    private void testLogger(Logger logger){
+        logger.info("Starting program");
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+        for (int i = 0; i < 20; i++){
+            logger.debug(String.format("i = %d", i));
+            logger.info("Processing data...");
+        }
+
+        logger.info("Closing program");
     }
 }

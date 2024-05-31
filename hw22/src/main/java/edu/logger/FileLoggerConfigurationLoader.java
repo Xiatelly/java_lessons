@@ -1,17 +1,18 @@
 package edu.logger;
 
 import edu.logger.config.FileLoggerSettings;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+
+import java.io.*;
 
 public class FileLoggerConfigurationLoader {
     public FileLoggerConfiguration load(String path){
         FileLoggerConfiguration config = new FileLoggerConfiguration();
 
         try {
-            InputStream inputStream = App.class.getResourceAsStream(path);
+            String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+            String appConfigPath = rootPath + path;
+
+            InputStream inputStream = new FileInputStream(appConfigPath);
             if (inputStream != null) {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 

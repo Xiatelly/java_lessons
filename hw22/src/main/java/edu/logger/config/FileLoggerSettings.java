@@ -3,7 +3,7 @@ package edu.logger.config;
 public final class FileLoggerSettings {
     private FileLoggerSettings(){}
 
-    public final static String DEFAULT_CONFIG_PATH = "/resources/config.txt";
+    public final static String DEFAULT_CONFIG_PATH = "config.txt";
 
     public final static String CONFIG_LOG_PATH_KEY = "FILE";
     public final static String CONFIG_LOG_LEVEL_KEY = "LEVEL";
