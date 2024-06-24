@@ -6,20 +6,24 @@ public class CarBuilder {
     private int wheels;
     private String color;
 
-    public void setShell(String shell) {
+    public CarBuilder shell(String shell) {
         this.shell = shell;
+        return this;
     }
 
-    public void setElectric(String electric) {
+    public CarBuilder electric(String electric) {
         this.electric = electric;
+        return this;
     }
 
-    public void setWheels(int wheels) {
+    public CarBuilder wheels(int wheels) {
         this.wheels = wheels;
+        return this;
     }
 
-    public void setColor(String color) {
+    public CarBuilder color(String color) {
         this.color = color;
+        return this;
     }
 
     public Car build(){
